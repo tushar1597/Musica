@@ -5,27 +5,31 @@ import { database } from "../firebase_folder";
 import { db } from "../firebase_folder/firebase";
 import tick from '../image/tick.png';
 
+let userid;
+
 class DeleteModal extends Component {
     constructor(props) {
         super(props);
-
+        if(this.props.user){
+          userid = this.props.user.uid;
+        }
     }
   deleteSong(keyObj){
     //Deleting the audio file from firebase and storage itself..
     let key = keyObj.key;
     document.getElementById('del-msg').innerHTML = "Deleting, Please Wait..";
-    document.getElementById('loading-1').style.display='block';
+    document.getElementById('loading-2').style.display='block';
     let storageRef = firebase.storage().ref('/allSongs/'+key);
     storageRef.delete().then(function() {
       // File deleted successfully
       //removing from database...
-      let userPath = db.ref(`Songs/${key}`);
+      let userPath = db.ref(`Songs/${userid}/${key}`);
       userPath.remove();
       window.location.reload();
 
     }.bind(this)).catch(function(error) {
         document.getElementById('fileStatus').innerHTML = "File not deleted due to some errors, please try again..";
-        document.getElementById('loading-1').style.display='none';
+        document.getElementById('loading-2').style.display='none';
         // Uh-oh, an error occurred!
       });
   }
@@ -60,7 +64,7 @@ class DeleteModal extends Component {
                 					<form className="pcform" name="uploadform" >
 
                 					<div className="modal-body">
-                          <img src={loadingImg} className="loading" id="loading-1"/>
+                          <img src={loadingImg} className="loading" id="loading-2"/>
 
                           <p className="modal-msg fileStatus" id="fileStatus"></p>
                 						<p className="modal-msg fileStatus" id="del-msg">Are you sure to delete the file?</p>

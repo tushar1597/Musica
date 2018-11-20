@@ -9,11 +9,11 @@ class HomePage extends Component {
   render() {
     return (
       <Fragment>
-      <Header/>
+      <Header user={this.props.user}/>
       <div className="container-fluid homePage-container">
       <button className="uploadBtn" data-toggle="modal" data-target="#uploadModal">Add Songs</button>
       </div>
-      <UploadModal/>
+      <UploadModal user={this.props.user}/>
       </Fragment>
 
     );

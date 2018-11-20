@@ -6,6 +6,9 @@
   background: #F9F9F9;
 
 }
+#body{
+  background-attachment: fixed;
+}
 .toogleBtn{
   float:right;
   margin-top: 23px;
@@ -91,17 +94,28 @@ font-family: 'Cookie', cursive;
 .progress-custom{
   display: none!important;
 }
+.tickStyle-fp{
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  display: none;
+}
 .tickStyle{
-  display: block;
+
       margin-left: auto;
       margin-right: auto;
       width: 50%;
       display: none;
 }
+.fp-container{
+    margin-bottom: 130px;
+}
 .songimg{
 	width:100%;
 	height: 220px;
 	z-index:0;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 .col-remove-padding{
 	padding:0;
@@ -137,16 +151,24 @@ font-family: 'Cookie', cursive;
 	color:#cd486b;
 }
 .overflow {
+  margin:0!important;
+
   white-space:nowrap;
-  max-width:96%;
+  max-width:100%;
   padding-left:2%;
   overflow:hidden;
   padding-top: 10px;
   padding-bottom:10px;
+  background: #fff;
+  padding-right:10px!important;
+
 }
 .audio{
 	width: 100%;
-
+  border-radius: none!important;
+  background: #f1f1f1;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 #marqueetagid{
 	padding:-10px ;
@@ -183,13 +205,15 @@ font-family: 'Cookie', cursive;
   color:#cd486b;
   font-weight: bold;
   font-size: 15px;
+  display: block;
   position: fixed;
-  right: 0;
-  left: 0;
   bottom: 0;
+  left:0;
+  right:0;
   padding-bottom: 20px;
   overflow: hidden;
 }
+
 .footermargin{
 	height: 5px;
 	width: 100%;
@@ -224,6 +248,7 @@ font-family: 'Cookie', cursive;
 .lastfootersection{
 		text-align: center;
 
+
 	}
 .audios-container{
   margin-bottom: 100px;
@@ -237,17 +262,261 @@ font-family: 'Cookie', cursive;
     margin-top: 10px;
     color: #fbad50;
     font-family: 'Satisfy', cursive;
+    font-size: 20px;
     padding-left: 10px;
-    font-size: 25px;
 }
 .email{
   color: #cd486b;
 }
+.profileBtnContainer{
+  width:45px;
+  height:45px;
+  background: transparent;
+  float: right;
+  border-radius: 50%;
+  margin-top: 13px;
+  background-size: cover!important;
+}
+.profileBtn{
+
+  background: transparent;
+  float: right;
+  -webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.profileBtn:hover{
+  text-decoration: underline;
+}
+
+.profileBtn.dropdown-toggle::after{
+  display: none;
+}
+ul.dropdown-menu{
+  background:#fff ;
+  min-width: 0px;
+  width:120px;
+  padding:5px;
+  float:right!important;
+  border:1px solid #cd486b;
+  margin-left: 30px!important;
+}
+.hrStyle{
+  padding:0;
+  margin:0;
+  background:#fff;
+}
+.optionStyle{
+color:#cd486b;
+border:none;
+background: transparent;
+}
+.centerStyle{
+  text-align: center;
+  padding:0;
+  margin: 0;
+}
+.optionStyle:hover{
+  text-decoration:none;
+  color:#A43955;
+}
+.loginInForm{
+  border-bottom-right-radius:8px;
+  border:1px solid #cd486b;
+  border-bottom-left-radius:8px;
+  padding:12px;
+  background: #F9F9F9;
+  box-shadow: 2px 5px 25px 2px #C0C0C0;
+  z-index: 1;
+}
+.formHeader{
+  height: 50px;
+  background: #cd486b;
+  border-top-right-radius:8px;
+  border-top-left-radius:8px;
+
+}
+.form-input{
+  background: #F9F9F9!important;
+}
+.header-form-container{
+margin-top: 50px;
+}
+.formHeading{
+	color:#fff;
+	font-size:35px;
+	font-weight: normal;
+
+	font-family: 'Cookie', cursive;
+
+}
+.form-items{
+  color:#12a9b0;
+  font-weight: bold;
+}
+.btn-signup{
+  background:#12a9b0;
+  color:#fff;
+}
+.btn-login{
+  background: #12a9b0;
+  color:#fff;
+}
+.btn-signup:hover{
+  background:#0b666b;
+  color:#fff;
+}
+.LoginContainer{
+  background: transparent;
+}
+.btn-login:hover{
+  background: #0b666b;
+  color:#fff;
+}
+.hiUsername{
+  color:#12a9b0;
+  float:right;
+  margin-top: 20px;
+  font-weight: bold;
+  padding:5px;
+}
+.nosongs{
+  padding:0;
+  margin:0;
+  width: 500px;
+   height: 63px;
+   text-align: center;
+   position: absolute;
+   top:0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+   padding:5px;
+   border-radius: 5px;
+   background:rgba(0,0,0,0.5);
+   font-weight: bold;
+   font-size: 32px;
+   box-shadow: 2px 5px 15px 2px #C0C0C0;
+}
+.odd{
+  color:#fff;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: black;
+}
+.even{
+  color:#fff;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: black;
+}
+.btn-fpassword{
+  background: none;
+  color:#12a9b0;
+  font-weight: bold!important;
+}
+.btn-fpassword:hover{
+  text-decoration: underline!important;
+  color:#12a9b0;
+}
+.btn-login-fp{
+  color:#12a9b0;
+  font-weight: bold!important;
+}
+.btn-signup-fp{
+  color:#12a9b0;
+  font-weight: bold!important;
+}
+.btn-login-fp:hover,.btn-signup-fp:hover{
+  text-decoration: underline!important;
+  color:#12a9b0;
+}
+.fp-break{
+  display: none;
+}
+.resetMsg{
+  color:#12a9b0;
+  display: none!important;
+  margin:0 auto;
+  text-align: center;
+
+}
+.errorMsg{
+  color:#cd486b;
+  padding:0;
+  margin:0;
+  font-weight: bold;
+  display: none;
+}
+.hr-form{
+  padding: 0;
+  margin:0;
+  background: #cd486b;
+  display:none;
+}
+.audioSubcontainer{
+  border-top-left-radius: 30px!important;
+}
+
 
 @media only screen and (max-width: 768px){
+  .btn-fpassword{
+    margin-left: 0!important;
+  }
+  .fp-container{
+      margin-bottom: 120px;
+  }
+  .hiUsername{
+    font-size: 14px;
+    margin:0;
+  }
+  .profileBtnContainer{
+    margin:0;
+    height: 30px;
+    width:30px;
+  }
+  .optionStyle{
+    font-size: 13px;
+  }
+
+  .profileBtn{
+
+  }
+  .tickStyle-fp{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    display: none;
+  }
+  ul.dropdown-menu{
+
+    margin-right: 10px!important;
+
+  }
   .header{
     height:100px;
     background: #F9F9F9;
+  }
+  .resetMsg{
+    display: table;
+    margin:0 auto;
+    text-align: center;
+
+  }
+  .nosongs{
+
+    width: 200px;
+     height: 103px;
+     text-align: center;
+     position: absolute;
+     padding:5px;
+     border-radius: 5px;
+     background:rgba(0,0,0,0.7);
+     font-weight: bold;
+     font-size: 32px;
+     box-shadow: 2px 5px 15px 2px #C0C0C0;
   }
 
   .playthemusic{
@@ -272,15 +541,53 @@ font-family: 'Cookie', cursive;
 
   }
   .footer{
-    height:182px;
+    height:150px;
+    position: static;
+
   }
   .playthemusicfooter{
 
       margin-top: 0px;
 
   }
+
   .audios-container{
-    margin-bottom: 182px;
+    margin-bottom: 150px;
+  }
+  .musiciconfooter{
+    text-align: center;
+    font-weight: bold; font-family:'Cookie', cursive;
+
   }
 
+  .lastfootersection{
+  		text-align: center;
+      font-size: 12px;
+
+  	}
+
+  .musiciconfooter{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold; font-family:'Cookie', cursive;
+  }
+  .playthemusicfooter{
+      text-align: center;
+      color: #fbad50;
+      font-family: 'Satisfy', cursive;
+      font-size: 15px;
+      padding-left: 10px;
+  }
+  .copyright{
+    font-size: 13px;
+
+  }
+  .fp-break{
+    display: block;
+  }
+  .form-btns{
+    display: table;
+    margin:0 auto;
+
+  }
 }

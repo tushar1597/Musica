@@ -8,11 +8,12 @@ import $ from 'jquery';
 import  musicImg from "../image/musicImg.jpg";
 import ReactLoader from './ReactLoader';
 import DeleteModal from './deleteModal';
+import background from '../image/background4.jpg';
 
 let keys = [];
 let filenames = [];
 let urls = [];
-
+let userid;
 
 
 class Player extends Component {
@@ -22,11 +23,20 @@ class Player extends Component {
     this.state={
       displayLinks:false,
     }
+    if(this.props.user){
+    userid = this.props.user.uid;
+    console.log(userid);
+  }
   }
 
   componentDidMount(){
+    document.getElementById('body').style.backgroundImage = "url("+background+")";
+    document.getElementById("footerid").style.position="fixed";
+    console.log('user==',this.props.user);
     let dbResponse;
-    let userPath = db.ref(`Songs`);
+    console.log("Method called ..")
+
+    let userPath = db.ref(`Songs/${userid}`);
           userPath.once("value", function(snapshot) {
           dbResponse = snapshot.val();
 
@@ -37,18 +47,18 @@ class Player extends Component {
             urls.push(dbResponse[key]['url']);
 
           }
-          //console.log(filenames);
+          console.log(filenames);
           //console.log(urls);
           //console.log(keys);
           this.setState({
-            displayLinks:true,
+            displayLinks:keys.length,
           });
           }.bind(this));
+
   }
 
 addMarquee(id){
           let check;
-
           let  element = document.getElementById("overflow"+id.index);
 
 						check=this.isElementOverflowing(element);
@@ -89,19 +99,24 @@ removeMarquee(id){
 
 }
 
+
 autoplayfunction(id){
 //id is of the song file that is in play
   //console.log(id);
   $("audio").on("play", function() {
-  				$("audio").not(this).each(function(index, audio) {
-  					audio.pause();
+          $("audio").not(this).each(function(index, audio) {
+            audio.pause();
 
-  				});
-  			});
+          });
+        });
   this.setState({
     currentSongID:id.index
   })
-}
+
+
+    }
+
+
 
 
 setKey(key){
@@ -128,7 +143,7 @@ setKey(key){
         return (
           <div className="col-md-3 col-sm-4 col-remove-padding" key={container_id} onMouseLeave={()=>this.removeMarquee({index})}>
             <div className="well well2" key={well_id}>
-            <div key={subcontainer_id}>
+            <div key={subcontainer_id} className="audioSubcontainer">
             <button className="btn btn-del" key={del_btn} data-toggle="modal" data-target="#deleteModal" onClick={()=>this.setKey({key})} >x</button>
             <img src={musicImg} className="songimg"  key={img_id} onMouseOver={()=>this.addMarquee({index})}/></div>
           <div className="overflow" key={overflow_id} id={overflow_id}>
@@ -141,7 +156,7 @@ setKey(key){
               </audio>
             </div>
             </div>
-            <DeleteModal keyToBeDeleted={this.state.keyToBeDeleted}/>
+            <DeleteModal keyToBeDeleted={this.state.keyToBeDeleted} user={this.props.user}/>
           </div>
         )
       });
@@ -156,9 +171,15 @@ setKey(key){
         </div>
       );
     }
-    else{
+    else if(this.state.displayLinks===false){
       return (
         <ReactLoader/>
+
+      );
+    }
+    else if(this.state.displayLinks===0){
+      return (
+        <p className="nosongs even">No Songs Uploaded</p>
 
       );
     }
